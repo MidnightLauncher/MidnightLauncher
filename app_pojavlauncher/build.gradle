@@ -217,5 +217,6 @@ dependencies {
 
     // implementation 'net.sourceforge.streamsupport:streamsupport-cfuture:1.7.0'
 
+    implementation 'org.tomlj:tomlj:1.1.1'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 }

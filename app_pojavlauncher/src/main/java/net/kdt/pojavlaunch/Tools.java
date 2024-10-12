@@ -96,6 +96,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.jar.JarFile;
+
+import me.andreasmelone.basicmodinfoparser.BasicModInfo;
+import me.andreasmelone.basicmodinfoparser.Platform;
 
 @SuppressWarnings("IOStreamConstructor")
 public final class Tools {
@@ -176,21 +180,32 @@ public final class Tools {
     }
 
     /**
-     * Optimization mods based on Soium can mitigate the render distance issue. Check if Sodium
+     * Optimization mods based on Sodium can mitigate the render distance issue. Check if Sodium
      * or its derivative is currently installed to skip the render distance check.
      * @param gamedir current game directory
      * @return whether sodium or a sodium-based mod is installed
      */
     private static boolean hasSodium(File gamedir) {
+        String[] sodiumBasedModIds = new String[] {
+                "sodium", "embeddium", "rubidium", "magnesium"
+        };
+
         File modsDir = new File(gamedir, "mods");
-        File[] mods = modsDir.listFiles();
-        if(mods == null) return false;
-        for(File file : mods) {
-            String name = file.getName();
-            if(!file.isFile() && !name.endsWith(".jar")) continue;
-            if(name.contains("sodium") ||
-                    name.contains("embeddium") ||
-                    name.contains("rubidium")) return true;
+        File[] mods = modsDir.listFiles(file -> file.getName().endsWith(".jar"));
+        if (mods == null) return false;
+
+        for (File file : mods) {
+            try (JarFile jar = new JarFile(file)) {
+                Platform[] platforms = Platform.findModPlatform(file);
+                for (Platform platform : platforms) {
+                    BasicModInfo info = platform.parse(platform.getInfoFileContent(jar));
+                    for (String modId : sodiumBasedModIds) {
+                        if (info.getId().equalsIgnoreCase(modId)) return true;
+                    }
+                }
+            } catch (IOException e) {
+                Log.e("CheckSodium", "An exception occurred while reading mod file: " + file.getName(), e);
+            }
         }
         return false;
     }
