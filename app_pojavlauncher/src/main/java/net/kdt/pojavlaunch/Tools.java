@@ -100,6 +100,7 @@ import java.util.jar.JarFile;
 
 import me.andreasmelone.basicmodinfoparser.BasicModInfo;
 import me.andreasmelone.basicmodinfoparser.Platform;
+import me.andreasmelone.basicmodinfoparser.util.ModInfoParseException;
 
 @SuppressWarnings("IOStreamConstructor")
 public final class Tools {
@@ -198,13 +199,16 @@ public final class Tools {
             try (JarFile jar = new JarFile(file)) {
                 Platform[] platforms = Platform.findModPlatform(file);
                 for (Platform platform : platforms) {
-                    BasicModInfo info = platform.parse(platform.getInfoFileContent(jar));
+                    String content = platform.getInfoFileContent(jar);
+                    if(content == null) continue;
+                    BasicModInfo info = platform.parse(content);
                     for (String modId : sodiumBasedModIds) {
-                        if (info.getId().equalsIgnoreCase(modId)) return true;
+                        String id = info.getId();
+                        if (id != null && id.equalsIgnoreCase(modId)) return true;
                     }
                 }
-            } catch (IOException e) {
-                Log.e("CheckSodium", "An exception occurred while reading mod file: " + file.getName(), e);
+            } catch (IOException | ModInfoParseException e) {
+                Log.e("CheckSodium", "An exception occurred while processing mod file: " + file.getName(), e);
             }
         }
         return false;
