@@ -110,15 +110,13 @@
 
 	<View
 		android:id="@+id/_background_display_view"
-		android:layout_width="409dp"
-		android:layout_height="206dp"
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
 		android:background="@color/background_bottom_bar"
 		android:translationZ="-1dp"
 
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintTop_toTopOf="@id/mc_version_spinner"
-		app:layout_constraintVertical_bias="1.0"
-		tools:layout_editor_absoluteX="2dp" />
 
 	<com.kdt.mcgui.MineButton
 		android:id="@+id/play_button"
