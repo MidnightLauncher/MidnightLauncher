@@ -116,7 +116,7 @@
 		android:translationZ="-1dp"
 
 		app:layout_constraintBottom_toBottomOf="parent"
-		app:layout_constraintTop_toTopOf="@id/mc_version_spinner"
+		app:layout_constraintTop_toTopOf="@id/mc_version_spinner" />
 
 	<com.kdt.mcgui.MineButton
 		android:id="@+id/play_button"
