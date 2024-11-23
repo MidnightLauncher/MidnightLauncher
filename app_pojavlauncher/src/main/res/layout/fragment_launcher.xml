@@ -88,7 +88,7 @@
 		app:drawableEndSize="@dimen/padding_extra_large"
 		app:drawableStartIntegerScaling="true"
 
-		app:drawableStartSize="@dimen/_360sdp"
+		app:drawableStartSize="@dimen/_36sdp"
 		app:layout_constraintBottom_toTopOf="@id/play_button"
 		app:layout_constraintEnd_toStartOf="@+id/edit_profile_button"
 		app:layout_constraintHorizontal_bias="0.0"
