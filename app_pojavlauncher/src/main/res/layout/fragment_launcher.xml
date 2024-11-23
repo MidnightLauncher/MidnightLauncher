@@ -80,18 +80,16 @@
 		android:id="@+id/mc_version_spinner"
 		android:layout_width="0dp"
 		android:layout_height="@dimen/_52sdp"
-		android:layout_marginBottom="20dp"
 		android:background="@android:color/transparent"
+		android:drawableEnd="@drawable/spinner_arrow"
 
-		android:drawableEnd="@drawable/ic_spinner_arrow"
-		app:drawableEndPadding="@dimen/_1sdp"
-		app:drawableEndSize="@dimen/padding_extra_large"
+		app:drawableEndSize="@dimen/padding_heavy"
 		app:drawableStartIntegerScaling="true"
-
 		app:drawableStartSize="@dimen/_36sdp"
+		app:drawableEndPadding="@dimen/_1sdp"
+
 		app:layout_constraintBottom_toTopOf="@id/play_button"
 		app:layout_constraintEnd_toStartOf="@+id/edit_profile_button"
-		app:layout_constraintHorizontal_bias="0.0"
 		app:layout_constraintStart_toStartOf="parent" />
 
 	<ImageButton
