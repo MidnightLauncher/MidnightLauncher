@@ -2,7 +2,7 @@
 <resources>
     <!-- Light or not? -->
     <style name="AppTheme" parent="@style/Theme.AppCompat.NoActionBar">
-        <item name="windowNoTitle">false</item>
+        <item name="windowNoTitle">true</item>
         <item name="windowActionBar">true</item>
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:statusBarColor">@color/background_status_bar</item>
