@@ -32,7 +32,7 @@
         android:process=":launcher"
         android:resizeableActivity="true"
         android:icon="@mipmap/ic_launcher"
-		android:roundIcon="@mipmap/ic_launcher_round"
+	android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MissingStorageActivity"
@@ -91,12 +91,12 @@
             android:process=":gui_installer"
             android:name=".JavaGUILauncherActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout|keyboard|navigation|uiMode"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
         <activity
             android:name=".CustomControlsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|keyboard|navigation"
             android:exported="false"
-            android:screenOrientation="landscape">
+            android:screenOrientation="sensorLandscape">
             <intent-filter>
                 <action android:name=".CustomControlsActivity" />
 
@@ -105,10 +105,10 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout|keyboard|navigation|uiMode"
+            android:configChanges="keyboardHidden|screenSize|smallestScreenSize|screenLayout|keyboard|navigation|uiMode"
             android:launchMode="standard"
             android:process=":game"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="sensorLandscape" />
 
         <provider
             android:name=".scoped.FolderProvider"
