@@ -128,7 +128,6 @@ public class MainActivity extends BaseActivity implements ControlButtonMenuListe
                 case 5: mControlLayout.openSetDefaultDialog(); break;
                 case 6: mControlLayout.openExitDialog(this);
             }
-        requestedOrientation = Activity.info.SCREEN_ORIENTATION_LANDSCAPE;
         };
 
         // Recompute the gui scale when options are changed
