@@ -90,7 +90,7 @@ _Noreturn static void abort_waiter_handler(int signal) {
     while(1) {}
 }
 
-int nice(-20);
+int nice(int inc);
 
 static void abort_waiter_setup() {
     // Only abort on SIGABRT as the JVM either emits SIGABRT or SIGKILL (which we can't catch)
@@ -126,7 +126,7 @@ static void abort_waiter_setup() {
 
 static jint launchJVM(int margc, char** margv) {
    void* libjli = dlopen("libjli.so", RTLD_LAZY | RTLD_GLOBAL);
-   int nice(-20);
+   nice(-20);
    // Unset all signal handlers to create a good slate for JVM signal detection.
    struct sigaction clean_sa;
    memset(&clean_sa, 0, sizeof (struct sigaction));
