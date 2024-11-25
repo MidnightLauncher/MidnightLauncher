@@ -27,12 +27,12 @@
         android:allowNativeHeapPointerTagging="false"
         android:appCategory="game"
         android:hasFragileUserData="true"
-        android:icon="@mipmap/ic_launcher"
         android:isGame="true"
         android:label="@string/app_name"
         android:process=":launcher"
         android:resizeableActivity="true"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/ic_launcher"
+		android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme">
         <activity
             android:name=".MissingStorageActivity"
@@ -91,12 +91,12 @@
             android:process=":gui_installer"
             android:name=".JavaGUILauncherActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout|keyboard|navigation|uiMode"
-            android:screenOrientation="sensorLandscape" />
+            android:screenOrientation="landscape" />
         <activity
             android:name=".CustomControlsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize|keyboard|navigation"
             android:exported="false"
-            android:screenOrientation="sensorLandscape">
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name=".CustomControlsActivity" />
 
@@ -108,7 +108,7 @@
             android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize|screenLayout|keyboard|navigation|uiMode"
             android:launchMode="standard"
             android:process=":game"
-            android:screenOrientation="sensorLandscape" />
+            android:screenOrientation="landscape" />
 
         <provider
             android:name=".scoped.FolderProvider"
