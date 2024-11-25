@@ -37,8 +37,6 @@
 #include "utils.h"
 #include "environ/environ.h"
 
-// Priority
-#include "resource.h"
 // Uncomment to try redirect signal handling to JVM
 // #define TRY_SIG2JVM
 
