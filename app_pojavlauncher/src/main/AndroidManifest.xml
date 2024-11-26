@@ -23,6 +23,7 @@
 
     <application
         android:name=".PojavApplication"
+        android:hardwareAccelerated="true"
         android:allowBackup="true"
         android:allowNativeHeapPointerTagging="false"
         android:appCategory="game"
