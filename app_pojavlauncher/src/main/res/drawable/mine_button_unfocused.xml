@@ -2,7 +2,7 @@
     android:width="32dp"
     android:height="32dp"
     android:viewportWidth="640"
-    android:viewportHeight="200">
+    android:viewportHeight="124">
     <path
         android:fillColor="@android:color/system_accent1_200"
         android:pathData="M0 80c0-44.18 35.82-80 80-80h440c44.18 0 80 35.82 80 80v160c0 44.18-35.82 80-80 80h-440c-44.18 0-80-35.82-80-80z"/>
