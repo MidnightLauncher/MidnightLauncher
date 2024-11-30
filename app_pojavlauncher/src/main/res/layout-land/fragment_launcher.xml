@@ -123,16 +123,15 @@
 
     <com.kdt.mcgui.MineButton
         android:id="@+id/play_button"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_17sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
 
 
         android:layout_marginEnd="@dimen/_8sdp"
         android:text="@string/main_play"
         android:textAllCaps="true"
-        app:layout_constraintBottom_toBottomOf="@+id/mc_version_spinner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/mc_version_spinner" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
 
