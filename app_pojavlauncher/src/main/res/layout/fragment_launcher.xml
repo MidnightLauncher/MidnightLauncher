@@ -120,7 +120,7 @@
 
 	<com.kdt.mcgui.MineButton
 		android:id="@+id/play_button"
-		android:layout_width="match_parent"
+		android:layout_width="@dimen/_80sdp"
 		android:layout_height="@dimen/_62sdp"
 
 		android:layout_marginHorizontal="@dimen/_17sdp"
