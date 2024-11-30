@@ -132,6 +132,6 @@
         android:layout_marginEnd="@dimen/_8sdp"
         android:text="@string/main_play"
         android:textAllCaps="true"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
