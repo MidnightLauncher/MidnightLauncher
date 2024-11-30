@@ -7,9 +7,9 @@
     <color name="background_app">@android:color/system_neutral1_900</color>
     <color name="divider">@color/background_overlay</color>
     <color name="background_overlay">@android:color/system_neutral1_100</color>
-    <color name="background_status_bar">#FF0000</color>
+    <color name="background_status_bar">#@android:color/system_neutral1_900</color>
     <color name="background_bottom_bar">@android:color/system_neutral1_100</color>
 
     <color name="primary_text">@android:color/system_accent1_200</color>
-    <color name="secondary_text">@android:color/system_accent2_200</color>
+    <color name="secondary_text">@android:color/system_neutral1_900</color>
 </resources>
