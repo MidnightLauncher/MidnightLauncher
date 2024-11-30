@@ -4,12 +4,12 @@
     <color name="control_button_pressed_color">#FF000000</color>
 
     <color name="minebutton_color">@android:color/system_accent1_200</color>
-    <color name="background_app">#0D0D14</color>
+    <color name="background_app">@android:color/system_neutral1_900</color>
     <color name="divider">@color/background_overlay</color>
-    <color name="background_overlay">#7F00E8</color>
-    <color name="background_status_bar">#0D0D14</color>
-    <color name="background_bottom_bar">#050406</color>
+    <color name="background_overlay">@android:color/system_neutral1_100</color>
+    <color name="background_status_bar">#FF0000</color>
+    <color name="background_bottom_bar">@android:color/system_neutral1_100</color>
 
-    <color name="primary_text">#CDBBF9</color>
-    <color name="secondary_text">#8A7EA8</color>
+    <color name="primary_text">@android:color/system_accent1_200</color>
+    <color name="secondary_text">@android:color/system_accent2_200</color>
 </resources>
