@@ -79,9 +79,25 @@ Then, run these commands ~~or build using Android Studio~~.
 (Replace `gradlew` with `gradlew.bat` if you are building on Windows).
 
 ## Current status
-- [ ] New themes/custom themes and such
-- [ ] Material you support (partially done) 
+- [ ] Remake the whole launcher UI
+- [ ] Skin installer
+- [ ] Material you support (partially done)
+- [ ] Launcher's webpage
+- [ ] Add version info to modpack instances
+- [ ] Neoforge installer
+- [ ] Screen offset for chat
+- [ ] Past logs in the log output menu
+- [ ] Option to start the game with the logging menu
+- [ ] Mod installer
+- [ ] Custom UI themes/templates
+- [ ] Data backup and recovery (perhaps a config file to store all launcher data)
+- [ ] Options for rooted devices 😈
+- [ ] Game directory on the sd card
+- [ ] Improve the default controlmap
 - [x] Little performance boost (by setting the nice value of the game process to -20)
+
+* Far future
+- [ ] MidnightLauncher for IOS and PC
 
 ## Known Issues
 - All the issues from [PojavLauncher](https://github.com/PojavLauncherTeam/PojavLauncher?tab=readme-ov-file#known-issues).
@@ -89,7 +105,7 @@ Then, run these commands ~~or build using Android Studio~~.
 - MidnightLauncher is licensed under [GNU GPLv3](https://github.com/MidnightLauncher/MidnightLauncher/blob/master/LICENSE).
 
 ## Contributing
-Contributions are welcome! We welcome any type of contribution, not only code. For example, you can help the wiki shape up.
+Contributions are welcome! We welcome any type of contribution, not only code (translations/typo fixes are welcome too).
 
 Any code change to this repository should be submitted as a pull request. The description should explain what the code does and give steps to execute it.
 
