@@ -1,6 +1,6 @@
 <H1 align="center">MidnightLauncher</H1>
 
-<img src="https://github.com/MidnightLauncher/MidnightLauncher/blob/v3_openjdk/app_pojavlauncher/src/main/assets/pojavlauncher.png" align="left" width="130" height="150" alt="PojavLauncher logo">
+<img src="https://github.com/MidnightLauncher/MidnightLauncher/blob/v3_openjdk/app_pojavlauncher/src/main/assets/midnightlauncher.png" align="left" width="150" height="150" alt="PojavLauncher logo">
 
 * MidnightLauncher is a [PojavLauncher](https://github.com/PojavLauncherTeam/PojavLauncher) fork focused on customizability and performance.
 
