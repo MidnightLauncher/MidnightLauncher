@@ -1,6 +1,6 @@
 <H1 align="center">MidnightLauncher</H1>
 
-<img src="https://github.com/MidnightLauncher/MidnightLauncher/blob/readme-update/app_pojavlauncher/src/main/assets/midnightlauncher.png" align="left" width="150" height="150" alt="PojavLauncher logo">
+<img src="https://github.com/MidnightLauncher/MidnightLauncher/blob/readme-update/app_pojavlauncher/src/main/assets/midnightlauncher.png" align="left" width="150" height="150" alt="MidnightLauncher logo">
 
 * MidnightLauncher is a [PojavLauncher](https://github.com/PojavLauncherTeam/PojavLauncher) fork focused on customizability and performance.
 
@@ -26,7 +26,7 @@
 * This repository contains source code for Android. 
 * Because this is a mainly Android fork, for iOS/iPadOS, check out [PojavLauncher_iOS](https://github.com/PojavLauncherTeam/PojavLauncher_iOS).
 
-## Getting PojavLauncher
+## Getting MidnightLauncher
 
 You can get MidnightLauncher via two methods:
 
