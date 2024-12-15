@@ -134,6 +134,6 @@
         android:textAllCaps="true"
 	app:layout_constraintBottom_toBottomOf="@+id/mc_version_spinner"    
 	app:layout_constraintEnd_toEndOf="parent"    
-	    app:layout_constraintEnd_toEndOf="@+id/mc_version_spinner" />
+	app:layout_constraintTop_toTopOf="@+id/mc_version_spinner" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
