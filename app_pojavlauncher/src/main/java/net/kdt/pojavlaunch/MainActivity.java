@@ -364,6 +364,9 @@ public class MainActivity extends BaseActivity implements ControlButtonMenuListe
         Logger.appendToLog("Info: API version: " + Build.VERSION.SDK_INT);
         Logger.appendToLog("Info: Selected Minecraft version: " + gameVersion);
         Logger.appendToLog("Info: Custom Java arguments: \"" + javaArguments + "\"");
+        Logger.appendToLog("Info: This is a fork of PojavLauncher called MidnightLauncher");
+        Logger.appendToLog("Info: It is available at https://github.com/MidnightLauncher/MidnightLauncher");
+        Logger.appendToLog("Info: For support please use https://discord.com/invite/JcsZn4ZGXB instead of the official PojavLauncher server");
     }
 
     private void dialogSendCustomKey() {
