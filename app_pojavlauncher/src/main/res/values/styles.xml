@@ -33,4 +33,10 @@
         <item name="android:background">?android:attr/listDivider</item>
     </style>
 
+    <item name="dimension_tracker" type="id" />
+    <style name="DimensionTracker">
+        <item name="android:id">@id/dimension_tracker</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
 </resources>
