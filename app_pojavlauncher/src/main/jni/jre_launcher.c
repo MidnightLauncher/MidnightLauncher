@@ -43,6 +43,7 @@
 // PojavLancher: fixme: are these wrong?
 #define FULL_VERSION "1.8.0-internal"
 #define DOT_VERSION "1.8"
+#define _XOPEN_SOURCE
 
 static const char* const_progname = "java";
 static const char* const_launcher = "openjdk";
@@ -89,6 +90,8 @@ _Noreturn static void abort_waiter_handler(int signal) {
     while(1) {}
 }
 
+int nice(int inc);
+
 static void abort_waiter_setup() {
     // Only abort on SIGABRT as the JVM either emits SIGABRT or SIGKILL (which we can't catch)
     // when a fatal crash occurs. Still, keep expandability if we would want to add more
@@ -123,7 +126,7 @@ static void abort_waiter_setup() {
 
 static jint launchJVM(int margc, char** margv) {
    void* libjli = dlopen("libjli.so", RTLD_LAZY | RTLD_GLOBAL);
-
+   nice(-20);
    // Unset all signal handlers to create a good slate for JVM signal detection.
    struct sigaction clean_sa;
    memset(&clean_sa, 0, sizeof (struct sigaction));

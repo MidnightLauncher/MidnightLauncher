@@ -78,6 +78,7 @@ import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.io.IOUtils;
 import org.lwjgl.glfw.CallbackBridge;
 
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -88,6 +89,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Field;
+import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -96,6 +98,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.jar.JarFile;
+
+import me.andreasmelone.basicmodinfoparser.BasicModInfo;
+import me.andreasmelone.basicmodinfoparser.Platform;
+import me.andreasmelone.basicmodinfoparser.util.ModInfoParseException;
 
 @SuppressWarnings("IOStreamConstructor")
 public final class Tools {
@@ -176,21 +183,35 @@ public final class Tools {
     }
 
     /**
-     * Optimization mods based on Soium can mitigate the render distance issue. Check if Sodium
+     * Optimization mods based on Sodium can mitigate the render distance issue. Check if Sodium
      * or its derivative is currently installed to skip the render distance check.
      * @param gamedir current game directory
      * @return whether sodium or a sodium-based mod is installed
      */
     private static boolean hasSodium(File gamedir) {
+        String[] sodiumBasedModIds = new String[] {
+                "sodium", "embeddium", "rubidium", "magnesium"
+        };
+
         File modsDir = new File(gamedir, "mods");
-        File[] mods = modsDir.listFiles();
-        if(mods == null) return false;
-        for(File file : mods) {
-            String name = file.getName();
-            if(!file.isFile() && !name.endsWith(".jar")) continue;
-            if(name.contains("sodium") ||
-                    name.contains("embeddium") ||
-                    name.contains("rubidium")) return true;
+        File[] mods = modsDir.listFiles(file -> file.getName().endsWith(".jar"));
+        if (mods == null) return false;
+
+        for (File file : mods) {
+            try (JarFile jar = new JarFile(file)) {
+                Platform[] platforms = Platform.findModPlatform(file);
+                for (Platform platform : platforms) {
+                    String content = platform.getInfoFileContent(jar);
+                    if(content == null) continue;
+                    BasicModInfo info = platform.parse(content);
+                    for (String modId : sodiumBasedModIds) {
+                        String id = info.getId();
+                        if (id != null && id.equalsIgnoreCase(modId)) return true;
+                    }
+                }
+            } catch (IOException | ModInfoParseException e) {
+                Log.e("CheckSodium", "An exception occurred while processing mod file: " + file.getName(), e);
+            }
         }
         return false;
     }
@@ -1217,17 +1238,55 @@ public final class Tools {
 
     /** Triggers the share intent chooser, with the latestlog file attached to it */
     public static void shareLog(Context context){
-        Uri contentUri = DocumentsContract.buildDocumentUri(context.getString(R.string.storageProviderAuthorities), Tools.DIR_GAME_HOME + "/latestlog.txt");
+        openPath(context, new File(Tools.DIR_GAME_HOME, "latestlog.txt"), true);
+    }
 
-        Intent shareIntent = new Intent();
-        shareIntent.setAction(Intent.ACTION_SEND);
-        shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri);
-        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-        shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        shareIntent.setType("text/plain");
+    /**
+     * Determine the MIME type of a File.
+     * @param file The file to determine the type of
+     * @return the type, or the default value *slash* if cannot be determined
+     */
+    public static String getMimeType(File file) {
+        if(file.isDirectory()) return DocumentsContract.Document.MIME_TYPE_DIR;
+        String mimeType = null;
+        try (FileInputStream fileInputStream = new FileInputStream(file)){
+            // Theoretically we don't even need the buffer since we don't care about the
+            // contents of the file after the guess, but mark-supported streams
+            // are a requirement of URLConnection.guessContentTypeFromStream()
+            try(BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream)) {
+                mimeType = URLConnection.guessContentTypeFromStream(bufferedInputStream);
+            }
+        }catch (IOException e) {
+            Log.w("FileMimeType", "Failed to determine MIME type by stream", e);
+        }
+        if(mimeType != null) return mimeType;
+        mimeType = URLConnection.guessContentTypeFromName(file.getName());
+        if(mimeType != null) return mimeType;
+        return "*/*";
+    }
 
-        Intent sendIntent = Intent.createChooser(shareIntent, "latestlog.txt");
-        context.startActivity(sendIntent);
+    /**
+     * Open the path specified by a File in a file explorer or in a relevant application.
+     * @param context the current Context
+     * @param file the File to open
+     * @param share whether to open a "Share" or an "Open" dialog.
+     */
+    public static void openPath(Context context, File file, boolean share) {
+        Uri contentUri = DocumentsContract.buildDocumentUri(context.getString(R.string.storageProviderAuthorities), file.getAbsolutePath());
+        String mimeType = getMimeType(file);
+        Intent intent = new Intent();
+        if(share) {
+            intent.setAction(Intent.ACTION_SEND);
+            intent.setType(getMimeType(file));
+            intent.putExtra(Intent.EXTRA_STREAM, contentUri);
+        }else {
+            intent.setAction(Intent.ACTION_VIEW);
+            intent.setDataAndType(contentUri, mimeType);
+        }
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Intent chooserIntent = Intent.createChooser(intent, file.getName());
+        context.startActivity(chooserIntent);
     }
 
     /** Opens a directory in the files app */
