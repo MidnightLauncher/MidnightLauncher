@@ -27,7 +27,7 @@ jobs:
           java-version: '8'
 
       - name: Get JRE 8
-        uses: dawidd6/action-download-artifact@v2
+        uses: dawidd6/action-download-artifact@v4
         with:
           workflow: build.yml
           path: app_pojavlauncher/src/main/assets/components/jre
@@ -37,7 +37,7 @@ jobs:
           name: jre8-pojav
 
       - name: Get JRE17
-        uses: dawidd6/action-download-artifact@v2
+        uses: dawidd6/action-download-artifact@v4
         with:
           workflow: build.yml
           path: app_pojavlauncher/src/main/assets/components/jre-new
@@ -47,7 +47,7 @@ jobs:
           name: jre17-pojav
 
       - name: Get JRE21
-        uses: dawidd6/action-download-artifact@v2
+        uses: dawidd6/action-download-artifact@v4
         with:
           workflow: build.yml
           path: app_pojavlauncher/src/main/assets/components/jre-21
@@ -115,13 +115,13 @@ jobs:
 #          md5sum out/app-debug-noruntime.apk > out/app-debug-noruntime.md5
 
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: app-debug
           path: out/app-debug.*
 
 #      - name: Upload AAB
-#        uses: actions/upload-artifact@v3
+#        uses: actions/upload-artifact@v4
 #        with:
 #          name: app-release-aab
 #          path: out/app-gplay.aab
@@ -138,7 +138,7 @@ jobs:
 #          inAppUpdatePriority: 5
 
 #      - name: Upload APK (without runtime)
-#        uses: actions/upload-artifact@v3
+#        uses: actions/upload-artifact@v4
 #        with:
 #          name: app-debug-noruntime
 #          path: out/app-debug-noruntime.*
