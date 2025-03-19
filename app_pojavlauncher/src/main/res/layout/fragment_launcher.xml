@@ -89,8 +89,8 @@
 
 	<ImageButton
 		android:id="@+id/edit_profile_button"
-		android:layout_width="@dimen/_26sdp"
-		android:layout_height="@dimen/_26sdp"
+		android:layout_width="@dimen/_52sdp"
+		android:layout_height="@dimen/_52sdp"
 		android:background="?android:attr/selectableItemBackground"
 
 		android:src="@drawable/ic_edit_profile"
