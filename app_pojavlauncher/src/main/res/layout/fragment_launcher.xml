@@ -62,7 +62,7 @@
 			<com.kdt.mcgui.LauncherMenuButton
 				android:id="@+id/open_files_button"
 				android:layout_width="match_parent"
-				android:layout_height="match_parent"
+				android:layout_height="wrap_content"
 				android:background="?android:attr/selectableItemBackground"
 				android:drawableStart="@drawable/ic_menu_files"
 				android:text="@string/main_open_files"
